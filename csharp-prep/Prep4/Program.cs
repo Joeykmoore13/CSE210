@@ -21,7 +21,7 @@ class Program
         float average = 0;
         foreach (int number in listOfNumbers)
         {
-            sum = sum + number;
+            sum += number;
         }
         average = sum / listOfNumbers.Count();
         Console.WriteLine($"Length: {listOfNumbers.Count()}");
