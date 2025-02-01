@@ -3,20 +3,20 @@ using System.Xml;
 
 class Journal
 {
-    public string name;
-    public string fileName;
-    public List<Entry> entryList = new List<Entry>();
-    public Entry currentEntry;
-    public bool quit = false;
-    public int choice;
+    public string _name;
+    public string _fileName;
+    public List<Entry> _entryList = new List<Entry>();
+    public Entry _currentEntry;
 
     public void Menu()
     {
+        int choice;
+        bool quit = false;
 
-        fileName = name + ".txt";
-        createEntryList();
+        _fileName = _name + ".txt";
+        CreateEntryList();
 
-        Console.WriteLine($"{name} loaded successfully!");
+        Console.WriteLine($"{_name} loaded successfully!");
         while (quit == false)
         {
             
@@ -32,7 +32,7 @@ class Journal
             if (choice == 1) // Load entry
         // only display this if there are entries to load
             {
-                loadEntry();
+                LoadEntry();
             }
             else if (choice == 2) // Create entry
             {
@@ -45,36 +45,36 @@ class Journal
                 promptList.Add("What was something I acomplised today?");
                 promptList.Add("Was thare anything I didn't get done today that I should have?");
                 
-                currentEntry = new Entry();
-                entryList.Add(currentEntry);
+                _currentEntry = new Entry();
+                _entryList.Add(_currentEntry);
 
                 DateTime today = DateTime.Today;
-                currentEntry.date = today.ToString("d");
+                _currentEntry._date = today.ToString("d");
 
                 Random promptnumber = new Random();
-                currentEntry.prompt = promptList[promptnumber.Next(0,6)];
+                _currentEntry._prompt = promptList[promptnumber.Next(0,6)];
                 Console.WriteLine("Your prompt for this entry is:");
-                Console.WriteLine(currentEntry.prompt);
+                Console.WriteLine(_currentEntry._prompt);
                 Console.WriteLine("What would you like to add for the entry text?: ");
-                currentEntry.text = Console.ReadLine();
+                _currentEntry._text = Console.ReadLine();
                 
                 
             }
             else if (choice == 3) // Delete entry
             {
-                deleteEntry();
+                DeleteEntry();
             }
             else if (choice == 4) // Display whole journal
             {
                 Console.WriteLine("");
-                foreach (Entry entry in entryList)
+                foreach (Entry entry in _entryList)
                 {
-                    entry.display();
+                    entry.Display();
                 }
             }
             else if (choice == 5) // save
             {
-                saveJournal();
+                SaveJournal();
                 quit = true;
             }
             else
@@ -90,83 +90,84 @@ class Journal
         
     }
 
-    public void createEntryList()
+    public void CreateEntryList()
     {
-        entryList = [];
-        string[] lines = System.IO.File.ReadAllLines($"{name}.txt");
+        _entryList = [];
+        string[] lines = System.IO.File.ReadAllLines($"{_name}.txt");
         foreach (string line in lines)
         {
             if (line != "")
             {
             Entry newEntry = new Entry();
             string[] entry_attributes = line.Split(",");
-            entryList.Add(newEntry);
-            entryList.Last().prompt = entry_attributes[0];
-            entryList.Last().date = entry_attributes[1];
-            entryList.Last().text = entry_attributes[2];
+            _entryList.Add(newEntry);
+            _entryList.Last()._prompt = entry_attributes[0];
+            _entryList.Last()._date = entry_attributes[1];
+            _entryList.Last()._text = entry_attributes[2];
             }
         }
     }
     
-    public void loadEntry()
+    public void LoadEntry()
     {
         bool done = false;
             while (done == false)
             {                    
-                createEntryList();
+                CreateEntryList();
                 Console.WriteLine("Which entry would you like to use?");
                 int i = 0;
-                foreach (var entry in entryList)
+                foreach (var entry in _entryList)
                 {
                     i += 1;
-                    Console.WriteLine($"{i}) {entry.date}");
+                    Console.WriteLine($"{i}) {entry._date}");
                 }
                 Console.Write("Choice: ");
-                Console.WriteLine(entryList.Count());
+                Console.WriteLine(_entryList.Count());
                 int secondChoice = Convert.ToInt32(Console.ReadLine());
-                if (secondChoice > entryList.Count() | secondChoice < 1)
+                if (secondChoice > _entryList.Count() | secondChoice < 1)
                 {
                     Console.WriteLine("Please select a valid option");
                 }
                 else
                 {
                     Console.WriteLine("");
-                    entryList[secondChoice - 1].display();
+                    _entryList[secondChoice - 1].Display();
                     done = true;
                 }
             }
     }
 
-    public void deleteEntry()
+    public void DeleteEntry()
     {
-        createEntryList();
+        int choice;
+        CreateEntryList();
         int i = 0;
-        foreach (Entry entry in entryList)
+        foreach (Entry entry in _entryList)
         {
             i += 1;
-            Console.WriteLine($"{i}) {entry.date}");
+            Console.WriteLine($"{i}) {entry._date}");
         }
         choice = Convert.ToInt32(Console.ReadLine());
-        if (choice > entryList.Count() | choice < 0)
+        if (choice > _entryList.Count() | choice < 0)
         {
             Console.WriteLine("Choose a valid option");
         }
         else
         {
-        currentEntry = entryList[choice-1];
-        entryList.Remove(currentEntry);
+        _currentEntry = _entryList[choice-1];
+        _entryList.Remove(_currentEntry);
         // Add a a possibility of having no entrys here.
-        currentEntry = entryList.Last();
+        _currentEntry = _entryList.Last();
         }
     }
 
-    public void saveJournal()
+    public void SaveJournal()
     {
-        File.WriteAllText($"{name}.txt", "");
-        using (StreamWriter outputFile = new StreamWriter($"{name}.txt", true))
-        foreach (Entry entry in entryList)
+        File.WriteAllText($"{_name}.txt", "");
+        using (StreamWriter outputFile = new StreamWriter($"{_name}.txt", true))
+        foreach (Entry entry in _entryList)
         {
-            outputFile.WriteLine($"{entry.prompt},{entry.date},{entry.text}");
+            outputFile.WriteLine($"{entry._prompt},{entry._date},{entry._text}");
         }
     }
 }

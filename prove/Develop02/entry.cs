@@ -1,15 +1,15 @@
 class Entry
 {
-    public string text;
-    public string prompt;
-    public string date;
+    public string _text;
+    public string _prompt;
+    public string _date;
 
-    public void display()
+    public void Display()
     {
         Console.WriteLine("");
-        Console.WriteLine($"Date: {date}");
-        Console.WriteLine($"Prompt: {prompt}");
-        Console.WriteLine($"Text: {text}");
+        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Prompt: {_prompt}");
+        Console.WriteLine($"Text: {_text}");
         
     }
 }

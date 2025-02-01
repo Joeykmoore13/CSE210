@@ -6,9 +6,6 @@ using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
-    
-    
-
     static void Main(string[] args)
     {
         Menu();
@@ -20,7 +17,7 @@ class Program
         int choice;
         Console.WriteLine("Welcome to the Journal manager!");
         Journal loadedJournal = new Journal();
-        loadedJournal.name = "";
+        loadedJournal._name = "";
         while (quit == false)
         {
             Console.WriteLine("What would you like to do? ");
@@ -62,7 +59,8 @@ class Program
         journalNames = CreateJournalList();
         while (true)
         {
-        System.Console.WriteLine("Which journal would you like to use?");
+        Console.WriteLine("");
+        Console.WriteLine("Which journal would you like to use?");
         int i = 0;
         foreach (string journal in journalNames)
         {
@@ -77,7 +75,7 @@ class Program
         if (secondChoice <= (journalNames.Count() - 1) && secondChoice >= 0)
         {
             Journal currentJournal = new Journal();
-            currentJournal.name = journalNames[secondChoice].Replace(" ","");
+            currentJournal._name = journalNames[secondChoice].Replace(" ","");
             if (init == false)
             {
                 currentJournal.Menu();
