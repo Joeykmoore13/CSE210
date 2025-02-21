@@ -13,7 +13,7 @@ class Scripture
 
     public Scripture(string referenceText)
     {
-        string[] splitVerses = Regex.Split(referenceText, @"(?=\d[0-9]{1,3})");
+        string[] splitVerses = Regex.Split(referenceText, @"(?=\d+)");
         foreach (string verse in splitVerses)
         {
             _verses.Add(new Verse(verse));
@@ -38,7 +38,6 @@ class Scripture
     {
         foreach (Verse verse in _verses)
         {
-            // update this so it has the blank spots
             verse.DisplayVerse();
             Console.WriteLine();
         }
