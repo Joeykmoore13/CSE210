@@ -5,7 +5,7 @@ class Program
     static List<Scripture> _scriptureList = new List<Scripture>();
     static void Main(string[] args)
     {
-        string[] lines = System.IO.File.ReadAllLines("C:/Users/joeyk/OneDrive/Documents/Coding/c#/CSE 210/CSE210/prove/Develop03/scriptures.txt");
+        string[] lines = System.IO.File.ReadAllLines("..\\..\\..\\scriptures.txt");
         string[] components;
         foreach (var line in lines)
         {
