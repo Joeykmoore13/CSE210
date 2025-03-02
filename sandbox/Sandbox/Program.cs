@@ -5,26 +5,25 @@ class Program
 {
     static void Main(string[] args)
     {
-        Display();
-        DisplaySecond();
-        Clear();
-        System.Console.WriteLine("Ran the things");   
+        int duration = 7;
+        Console.WriteLine("This is placeholder text");
+        Console.Write($"/ {duration}");
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        while (endTime > DateTime.Now)
+        {
+        Thread.Sleep(250);
+        Console.Write("\b\b\b\b\b\b\b\b");
+        Console.Write($"- {duration}");
+        Thread.Sleep(250);
+        Console.Write("\b\b\b\b\b\b\b\b");
+        Console.Write(@"\" + $" {duration}");
+        Thread.Sleep(250);
+        Console.Write("\b\b\b\b\b\b\b\b");
+        Console.Write($"| {duration}");
+        Thread.Sleep(250);
+        Console.Write("\b\b\b\b\b\b\b\b");
+        duration--;
+        Console.Write($"/ {duration}");
+        }
     }
-
-    static void Display()
-    {
-        Console.WriteLine("Hello world");
-    }
-
-    static void DisplaySecond()
-    {
-        Console.WriteLine("Goodbye world");
-    }
-
-    static void Clear()
-    {
-        Console.Clear();
-    }
-
-    
 }
