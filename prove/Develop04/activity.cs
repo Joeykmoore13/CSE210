@@ -3,13 +3,13 @@ class Activity
     protected int _duration;
     private string _description;
     private string _name;
-    public Activity ()
+    public Activity()
     {
         _duration = 0;
         _description = "";
         _name = "none";
     }
-    public Activity (int duration, string description, string name)
+    public Activity(int duration, string description, string name)
     {
         _duration = duration;
         _description = description;
@@ -21,19 +21,19 @@ class Activity
         DateTime endTime = DateTime.Now.AddSeconds(duration);
         while (endTime > DateTime.Now)
         {
-        Thread.Sleep(250);
-        Console.Write("\b\b\b\b\b\b\b\b");
-        Console.Write($"- {duration}");
-        Thread.Sleep(250);
-        Console.Write("\b\b\b\b\b\b\b\b");
-        Console.Write(@"\" + $" {duration}");
-        Thread.Sleep(250);
-        Console.Write("\b\b\b\b\b\b\b\b");
-        Console.Write($"| {duration}");
-        Thread.Sleep(250);
-        Console.Write("\b\b\b\b\b\b\b\b");
-        duration--;
-        Console.Write($"/ {duration}");
+            Thread.Sleep(250);
+            Console.Write("\b\b\b\b\b\b\b\b");
+            Console.Write($"- {duration}");
+            Thread.Sleep(250);
+            Console.Write("\b\b\b\b\b\b\b\b");
+            Console.Write(@"\" + $" {duration}");
+            Thread.Sleep(250);
+            Console.Write("\b\b\b\b\b\b\b\b");
+            Console.Write($"| {duration}");
+            Thread.Sleep(250);
+            Console.Write("\b\b\b\b\b\b\b\b");
+            duration--;
+            Console.Write($"/ {duration}");
         }
         Console.Write("\b\b\b\b\b\b\b\b");
     }
