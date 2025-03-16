@@ -1,0 +1,5 @@
+1;Speak,Speak in sacrament meeting,50,False
+2;Read,Read scriptures every day,5,0
+3;Temple,Attend the temple every weekend for the next month,25,1,5,30
+4;Finish BoM,Finish the Book of Mormon before the end of March,50,False,March 31,False
+4;Finish D&C,Finish D&C before the end of April,50,False,April 30,False
