@@ -1,0 +1,1 @@
+J-Perm:|2;ac;ac,White,Red,Blue,1|2;bc;cc,White,DarkRed,Green,1|2;cc;bc,White,Blue,DarkRed,3|2;dc;dc,White,Green,Red,2|2;uc;uc,Yellow,Red,Green,2|2;vc;vc,Yellow,Green,DarkRed,2|2;wc;wc,Yellow,DarkRed,Blue,1|2;xc;xc,Yellow,Blue,Red,1

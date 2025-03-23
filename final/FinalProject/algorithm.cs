@@ -3,19 +3,31 @@ using System.Diagnostics;
 class Algorithm
 {
     private string _algName;
-    private List<string> _moves;
-    private bool _is3x3;
+    private string _moves;
 
     public Algorithm()
     {
         _algName = "";
-        _moves = new List<string>();
-        _is3x3 = false;
+        _moves = "";
     }
-    public Algorithm(string algName, List<string> moves, bool is3x3)
+    public Algorithm(string algName, string moves)
     {
         _algName = algName;
         _moves = moves;
-        _is3x3 = is3x3;
+    }
+    public Algorithm(string dataString)
+    {
+        string[] splitData = dataString.Split(";");
+        _algName = splitData[0].Trim();
+        _moves = splitData[1];
+        
+    }
+    public string GetMoves()
+    {
+        return _moves;
+    }
+    public string GetAlgName()
+    {
+        return _algName;
     }
 }

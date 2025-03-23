@@ -2,9 +2,9 @@ using System;
 
 class Program
 {
-    static List<Goal> goalList = new List<Goal>();
-    static int pointTotal = 0;
-    static string input;
+    static List<Goal> _goalList = new List<Goal>();
+    static int _pointTotal = 0;
+    static string _input;
     static void Main(string[] args)
     {
         Console.Clear();
@@ -22,32 +22,32 @@ class Program
             Console.WriteLine("6) Record event");
             Console.WriteLine("7) Quit");
             Console.WriteLine("What would you like to do?: ");
-            input = Console.ReadLine();
-            if (input == "1")
+            _input = Console.ReadLine();
+            if (_input == "1")
             {
                 CreateGoal();
             }
-            else if (input == "2")
+            else if (_input == "2")
             {
                 DeleteGoal();
             }
-            else if (input == "3")
+            else if (_input == "3")
             {
                 List();
             }
-            else if (input == "4")
+            else if (_input == "4")
             {
                 Load();
             }
-            else if (input == "5")
+            else if (_input == "5")
             {
                 Save();
             }
-            else if (input == "6")
+            else if (_input == "6")
             {
                 RecordEvent();
             }
-            else if (input == "7")
+            else if (_input == "7")
             {
                 done = true;
             }
@@ -71,8 +71,8 @@ class Program
             Console.WriteLine("3) Checklist goal");
             Console.WriteLine("4) Timed goal");
             Console.WriteLine("What type of goal would you like to create?: ");
-            input = Console.ReadLine();
-            if (input == "1")
+            _input = Console.ReadLine();
+            if (_input == "1")
             {
                 Console.WriteLine("What would you like the goal to be?: ");
                 name = Console.ReadLine();
@@ -80,10 +80,10 @@ class Program
                 description = Console.ReadLine();
                 points = GetIntInput("What would you like the earned points to be?: ");
 
-                goalList.Add(new SimpleGoal(points, name, description));
+                _goalList.Add(new SimpleGoal(points, name, description));
                 break;
             }
-            else if (input == "2")
+            else if (_input == "2")
             {
                 Console.WriteLine("What would you like the goal to be?: ");
                 name = Console.ReadLine();
@@ -91,10 +91,10 @@ class Program
                 description = Console.ReadLine();
                 points = GetIntInput("What would you like the earned points to be?: ");
 
-                goalList.Add(new EternalGoal(points, name, description));
+                _goalList.Add(new EternalGoal(points, name, description));
                 break;
             }
-            else if (input == "3")
+            else if (_input == "3")
             {
                 int bonus = -1;
                 int totalCompleteions = -1;
@@ -110,10 +110,10 @@ class Program
                 bonus = GetIntInput("What would you like the bonus earned points to be?: ");
                 Console.WriteLine();
                 totalCompleteions = GetIntInput("What would you like the total number of completions to be?: ");
-                goalList.Add(new ChecklistGoal(totalCompleteions, bonus, points, name, description));
+                _goalList.Add(new ChecklistGoal(totalCompleteions, bonus, points, name, description));
                 break;
             }
-            else if (input == "4")
+            else if (_input == "4")
             {
                 Console.WriteLine("What would you like the goal to be?: ");
                 name = Console.ReadLine();
@@ -123,7 +123,7 @@ class Program
                 Console.WriteLine("When would you like this goal to be completed by?: ");
                 string completeDate = Console.ReadLine();
 
-                goalList.Add(new TimedGoal(points, name, description, completeDate));
+                _goalList.Add(new TimedGoal(points, name, description, completeDate));
                 break;
             }
             else
@@ -141,7 +141,7 @@ class Program
             ListGoals();
             try
             {
-                goalList.RemoveAt(GetIntInput("Which goal would you like to delete?: ") - 1);
+                _goalList.RemoveAt(GetIntInput("Which goal would you like to delete?: ") - 1);
             }
             catch
             {
@@ -154,9 +154,9 @@ class Program
     static void List()
     {
         Console.WriteLine();
-        if (goalList.Count() != 0)
+        if (_goalList.Count() != 0)
         {
-            foreach (Goal goal in goalList)
+            foreach (Goal goal in _goalList)
             {
                 goal.Display();
             }
@@ -168,10 +168,10 @@ class Program
     }
     static void ListGoals()
     {
-        if (goalList.Count() != 0)
+        if (_goalList.Count() != 0)
         {
             int i = 1;
-            foreach (Goal goal in goalList)
+            foreach (Goal goal in _goalList)
             {
                 Console.Write($"{i})");
                 i++;
@@ -185,7 +185,7 @@ class Program
     }
     static void Load()
     {
-        goalList = new List<Goal>();
+        _goalList = new List<Goal>();
         string[] split;
         string[] lines = System.IO.File.ReadAllLines("..\\..\\..\\goals.txt");
         foreach (string line in lines)
@@ -193,19 +193,19 @@ class Program
             split = line.Split(";");
             if (split[0] == "1")
             {
-                goalList.Add(new SimpleGoal(split[1]));
+                _goalList.Add(new SimpleGoal(split[1]));
             }
             else if (split[0] == "2")
             {
-                goalList.Add(new EternalGoal(split[1]));
+                _goalList.Add(new EternalGoal(split[1]));
             }
             else if (split[0] == "3")
             {
-                goalList.Add(new ChecklistGoal(split[1]));
+                _goalList.Add(new ChecklistGoal(split[1]));
             }
             else if (split[0] == "4")
             {
-                goalList.Add(new TimedGoal(split[1]));
+                _goalList.Add(new TimedGoal(split[1]));
             }
         }
         Console.WriteLine("Goals loaded!");
@@ -215,12 +215,12 @@ class Program
         while (true)
         {
             Console.WriteLine("Are you sure you would like to save?(This overwrites all previous data)(Y/N): ");
-            input = Console.ReadLine();
-            if (input == "Y")
+            _input = Console.ReadLine();
+            if (_input == "Y")
             {
                 using (StreamWriter outputFile = new StreamWriter("..\\..\\..\\goals.txt", false))
                 {
-                    foreach (Goal goal in goalList)
+                    foreach (Goal goal in _goalList)
                     {
                         outputFile.WriteLine($"{goal.GetDataString()}");
                     }
@@ -228,7 +228,7 @@ class Program
                 Console.WriteLine("Goals saved!");
                 return;
             }
-            else if (input == "N")
+            else if (_input == "N")
             {
                 return;
             }
@@ -247,7 +247,7 @@ class Program
             int intInput = GetIntInput("While goal would you like to record an event for?: ");
             try
             {
-                goalList[intInput - 1].RecordEvent();
+                _goalList[intInput - 1].RecordEvent();
                 return;
             }
             catch
@@ -264,10 +264,10 @@ class Program
         {
             Console.WriteLine();
             Console.WriteLine($"{writeText}");
-            input = Console.ReadLine();
+            _input = Console.ReadLine();
             try
             {
-                number = Convert.ToInt32(input);
+                number = Convert.ToInt32(_input);
             }
             catch
             {
@@ -279,12 +279,12 @@ class Program
     }
     static void CalculatePoints()
     {
-        pointTotal = 0;
-        foreach (Goal goal in goalList)
+        _pointTotal = 0;
+        foreach (Goal goal in _goalList)
         {
-            pointTotal += goal.GetEarnedPoints();
+            _pointTotal += goal.GetEarnedPoints();
         }
-        Console.WriteLine($"You have {pointTotal} points!");
+        Console.WriteLine($"You have {_pointTotal} points!");
     }
 
 }
