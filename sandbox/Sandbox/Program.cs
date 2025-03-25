@@ -24,7 +24,6 @@ class Program
         // }
 
         Process myProcess = new Process();
-
         try
         {
             // true is the default, but it is important not to set it to false

@@ -32,10 +32,6 @@ class CubeState
         cornerList.ToList().ForEach(x => _pieces.Add(x.Key, x.Value));
         _pieces.Add("center", center);
     }
-    public CubeState(string dataString)
-    {
-        //Fill this out to load cubeStates
-    }
     public Dictionary<string, Piece> GetPieces()
     {
         return _pieces;
@@ -61,8 +57,6 @@ class CubeState
                 subString = $"1;{key};{_edges[key].GetHomePosition()},{_edges[key].GetColor()},{_edges[key].GetColorTwo()},{_edges[key].IsOriented}";
             }
             dataString = dataString + $"|{subString}";
-
-
         }
         return dataString;
     }

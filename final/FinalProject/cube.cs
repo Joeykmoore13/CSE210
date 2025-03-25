@@ -1,5 +1,6 @@
 using System.Data.Common;
 using System.Linq.Expressions;
+using System.Diagnostics;
 
 class Cube
 {
@@ -20,12 +21,6 @@ class Cube
         _algList = new List<Algorithm>();
     }
 
-    // Things to implement:
-    // Help menu
-    // Enable and disable pieces
-    // Enabled and disabled pieces in the datastrings
-
-
     public virtual void SetCubeState()
     {
         int input;
@@ -34,7 +29,6 @@ class Cube
         int counter = 1;
         while (true)
         {
-            //Possibly add a spefz option here
             Console.WriteLine("How would you like to set the cube state?: ");
             Console.WriteLine("1) Reset cube");
             Console.WriteLine("2) Load cube state");
@@ -120,13 +114,13 @@ class Cube
                 string scramble = moveList[randomMove.Next(0, moveList.Count)];
                 moveList.Remove(scramble);
                 string nextMove = $"{moveList[randomMove.Next(0, moveList.Count)]}";
-                scramble = $"{scramble}, {nextMove}{moveModifier[randomMove.Next(0,2)]}";
+                scramble = $"{scramble}, {nextMove}{moveModifier[randomMove.Next(0, 2)]}";
                 for (int i = 0; i < 20; i++)
                 {
                     moveList = new List<string>(["R", "U", "F"]);
                     moveList.Remove(nextMove);
                     nextMove = moveList[randomMove.Next(0, moveList.Count)];
-                    scramble = $"{scramble}, {nextMove}{moveModifier[randomMove.Next(0,2)]}";
+                    scramble = $"{scramble}, {nextMove}{moveModifier[randomMove.Next(0, 2)]}";
                 }
                 ParseAlgorithm(scramble);
                 return;
@@ -329,7 +323,44 @@ class Cube
     }
     public void Help()
     {
-        //List what the menu options do, a link on how to read cubing notation, give some examples on how to use the different menu options, possibly add a link on how to use spefz
+        Console.Clear();
+        Console.WriteLine("1) Set Cube State");
+        Console.WriteLine("This function has 4 options. 'Reset' simply solves the cube. 'Load cube state' takes a cubestate that was saved previously and sets the current cube to that state.'Algorithm' resets the cube and then executes the moves that were input. This is useful for importing scrambles from cube timers. 'Scramble cube' simply picks 20 random moves and executes them");
+        Console.WriteLine();
+        Console.WriteLine("2)Save Cube State");
+        Console.WriteLine("This function takes the current state of the cube and saves it to a text file. This is where the load cube state function reads from.");
+        Console.WriteLine();
+        Console.WriteLine("3) InputAlgorithm");
+        Console.WriteLine("This function uses cube notation to execute moves on the cube. Type 'read' to take you to my website which covers how to read cube notation if interested. Here are some example algorithms to use:");
+        Console.WriteLine("Checkerboard pattern (3x3): L2, R2, F2, B2, D2, U2");
+        Console.WriteLine("Checkerboard pattern (2x2): R2, F2, R2, U2");
+        Console.WriteLine("J-perm: R, U, R', U', R', F, R2, U', R', U', R, U, R', F'");
+        Console.WriteLine("Cube in a cube in a cube (3x3): U', L', U', F', R2, B', R, F, U, B2, U, B', L, U', F, U, R, F");
+        Console.WriteLine("Cube in a cube (2x2): R, F, U', R2, U, F', R, U, F2, R2");
+        Console.WriteLine();
+        Console.WriteLine("4) Load Algorithms");
+        Console.WriteLine("This function loads algorithms from a text file and puts them into the algorithm list. When this is done the 'Execute Algorithms' and 'Save Algorithms' functions become available.");
+        Console.WriteLine();
+        Console.WriteLine("5) ExecuteAlgorithms");
+        Console.WriteLine("This function simply runs the algorithm that was chosen.");
+        Console.WriteLine();
+        Console.WriteLine("6) DeleteAlgorithm");
+        Console.WriteLine("This function deletes an algorithm from the loaded algorithms list.");
+        string input = Console.ReadLine();
+        if (input.ToLower() == "read")
+        {
+            Process myProcess = new Process();
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = "https://joeykmoore13.github.io/wdd130/3x3_tutorial/notation_page.html";
+                myProcess.Start();
+            }
+            catch
+            {
+                Console.WriteLine("Internal Error. Try again later.");
+            }
+        }
     }
     public virtual string ParseAlgorithm(string rawAlg)
     {

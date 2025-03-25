@@ -21,11 +21,6 @@ class ThreeXThree : Cube
         _edgeList.Add("X", new Edge("X", ConsoleColor.Yellow, ConsoleColor.Red));
     }
 
-    // Things to implement:
-    // Help menu
-    // Enable and disable pieces
-    // Enabled and disabled pieces in the datastrings
-
     public override void SetCubeState()
     {
         int input;
@@ -34,7 +29,6 @@ class ThreeXThree : Cube
         int counter = 1;
         while (true)
         {
-            //Possibly add a spefz option here
             Console.WriteLine("How would you like to set the cube state?: ");
             Console.WriteLine("1) Reset cube");
             Console.WriteLine("2) Load cube state");
