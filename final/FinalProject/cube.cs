@@ -21,6 +21,10 @@ class Cube
         _algList = new List<Algorithm>();
     }
 
+    // Things to implement:
+    // Enable and disable pieces
+    // Enabled and disabled pieces in the datastrings
+
     public virtual void SetCubeState()
     {
         int input;
@@ -288,6 +292,23 @@ class Cube
             Console.WriteLine("Which algorithm would you like to delete?: ");
             input = Console.ReadLine();
             Console.Clear();
+            try
+            {
+                if (Convert.ToInt32(input) > _algList.Count())
+                {
+                    Console.WriteLine("Please make a valid selection");
+                    Console.ReadLine();
+                    Console.Clear();
+                    return;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Please make a valid selection");
+                Console.ReadLine();
+                Console.Clear();
+                return;
+            }
             while (true)
             {
                 Console.WriteLine("Are you sure you would like to delete this?(Y/N): ");

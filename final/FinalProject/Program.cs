@@ -3,6 +3,7 @@ using System;
 class Program
 {
     static Cube _mainCube;
+
     static void Main(string[] args)
     {
         string input;

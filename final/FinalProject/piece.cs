@@ -32,4 +32,15 @@ class Piece
     {
         return ConsoleColor.Gray;
     }
+     public void DisablePiece()
+    {
+        //Change the display colors
+    }
+    public void EnablePiece()
+    {
+        //Change the display colors
+    }
+    // Add a DisablePiece method that sets a bool for the piece
+    // Add an EnablePiece method that sets a bool for the piece
+    // Change the get color methods to return gray if the piece is disabled
 }

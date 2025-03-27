@@ -5,7 +5,6 @@ classDiagram
         Static void Menu()
 
     }
-    note "Main will have a menu that asks the player which type of cube the player wants to create and create either a basic cube or a 3x3 cubbe. The Algorithm class will be used to load and store algorithms in a list of instances of the algorithm class. The Cube class contains lists of the corner class which is a sub-class of the piece class. The 3x3 class contains lists of the edge and center classes which are sub-classes of the piece class. The cubestate class serves a similar function to the algorithm class where it is used to load and save the state of the cube class."
     class Cube {
         protected Dictionary<string, Corner> _cornerList
         protected list<Algorithm> _algList
