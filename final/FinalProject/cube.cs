@@ -348,7 +348,7 @@ class Cube
         Console.WriteLine("1) Set Cube State");
         Console.WriteLine("This function has 4 options. 'Reset' simply solves the cube. 'Load cube state' takes a cubestate that was saved previously and sets the current cube to that state.'Algorithm' resets the cube and then executes the moves that were input. This is useful for importing scrambles from cube timers. 'Scramble cube' simply picks 20 random moves and executes them");
         Console.WriteLine();
-        Console.WriteLine("2)Save Cube State");
+        Console.WriteLine("2) Save Cube State");
         Console.WriteLine("This function takes the current state of the cube and saves it to a text file. This is where the load cube state function reads from.");
         Console.WriteLine();
         Console.WriteLine("3) InputAlgorithm");
@@ -362,10 +362,10 @@ class Cube
         Console.WriteLine("4) Load Algorithms");
         Console.WriteLine("This function loads algorithms from a text file and puts them into the algorithm list. When this is done the 'Execute Algorithms' and 'Save Algorithms' functions become available.");
         Console.WriteLine();
-        Console.WriteLine("5) ExecuteAlgorithms");
+        Console.WriteLine("5) Execute Algorithms");
         Console.WriteLine("This function simply runs the algorithm that was chosen.");
         Console.WriteLine();
-        Console.WriteLine("6) DeleteAlgorithm");
+        Console.WriteLine("6) Delete Algorithm");
         Console.WriteLine("This function deletes an algorithm from the loaded algorithms list.");
         string input = Console.ReadLine();
         if (input.ToLower() == "read")
