@@ -54,7 +54,7 @@ class CubeState
             }
             else
             {
-                subString = $"1;{key};{_edges[key].GetHomePosition()},{_edges[key].GetColor()},{_edges[key].GetColorTwo()},{_edges[key].IsOriented}";
+                subString = $"1;{key};{_edges[key].GetHomePosition()},{_edges[key].GetColor()},{_edges[key].GetColorTwo()},{_edges[key].IsOriented()}";
             }
             dataString = dataString + $"|{subString}";
         }
