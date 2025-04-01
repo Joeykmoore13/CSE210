@@ -1,5 +1,3 @@
-using Microsoft.Win32.SafeHandles;
-
 class Piece
 {
     protected string _homePosition;

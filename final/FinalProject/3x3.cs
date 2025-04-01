@@ -64,7 +64,7 @@ class ThreeXThree : Cube
                 if (names.Count() == 0)
                 {
                     Console.WriteLine("No states to load");
-                    Console.WriteLine();
+                    Console.ReadLine();
                     Console.Clear();
                     return;
                 }
@@ -80,7 +80,7 @@ class ThreeXThree : Cube
                     catch
                     {
                         Console.WriteLine("Please make a valid selection");
-                        Console.WriteLine();
+                        Console.ReadLine();
                         Console.Clear();
                         continue;
                     }
@@ -127,7 +127,7 @@ class ThreeXThree : Cube
             else
             {
                 Console.WriteLine("Please make a valid selection");
-                Console.WriteLine();
+                Console.ReadLine();
                 Console.Clear();
             }
         }
@@ -172,7 +172,7 @@ class ThreeXThree : Cube
             else
             {
                 Console.WriteLine("Please make a valid selection");
-                Console.WriteLine();
+                Console.ReadLine();
                 Console.Clear();
                 continue;
             }
@@ -184,7 +184,7 @@ class ThreeXThree : Cube
         if (_algList.Count() < 1)
         {
             Console.WriteLine("No algorithms loaded to save");
-            Console.WriteLine();
+            Console.ReadLine();
             Console.Clear();
         }
         else
@@ -215,7 +215,7 @@ class ThreeXThree : Cube
                 else
                 {
                     Console.WriteLine("Please make a valid selection.");
-                    Console.WriteLine();
+                    Console.ReadLine();
                     Console.Clear();
                 }
             }

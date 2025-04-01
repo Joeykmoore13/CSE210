@@ -6,45 +6,40 @@ class Program
 {
     static void Main(string[] args)
     {
-        // var cornerSearch = new Regex(@"\w{1}[c]");
-        // string algName = "testing";
-        // if (cornerSearch.IsMatch(algName))
-        // {
-        //     Console.WriteLine("Worked");
-        // }
-        // else
-        // {
-        //     Console.WriteLine("Didn't work");
-        // }
+        ClassTwo _classTwo = new ClassTwo();
+        ClassThree _classThree = new ClassThree();
+        _classTwo.Display();
+        _classThree.Display();
+    }
+}
 
-        // var cornerSearch = new Regex(@"\w{1}[c]");
-        // if (cornerSearch.IsMatch("ca"))
-        // {
-        //     Console.WriteLine("Worked");
-        // }
+abstract class ClassOne
+{
+    public ClassOne()
+    {
 
-        Process myProcess = new Process();
-        try
-        {
-            // true is the default, but it is important not to set it to false
-            myProcess.StartInfo.UseShellExecute = true;
-            myProcess.StartInfo.FileName = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-            myProcess.Start();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+    }
+    public abstract void Display();
+}
+class ClassTwo : ClassOne
+{
+    public ClassTwo() : base()
+    {
 
+    }
+    public override void Display()
+    {
+        Console.WriteLine("ClasTwo display");
+    }
+}
+class ClassThree : ClassTwo
+{
+    public ClassThree() : base()
+    {
 
-        // int myInt = 1;
-        // int Testing = 10;
-
-        // #if !Testing 
-        // Console.WriteLine("Testing is not defined");
-        // #endif
-
-
-
+    }
+    public override void Display()
+    {
+        Console.WriteLine("ClassThree display");
     }
 }

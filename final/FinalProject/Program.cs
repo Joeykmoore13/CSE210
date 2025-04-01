@@ -6,6 +6,11 @@ class Program
 
     static void Main(string[] args)
     {
+        // This looks funny but I added the InitMenu method so I could have a nearly empty Main to help with debugging
+        InitMenu();
+    }
+    static void InitMenu()
+    {
         string input;
         while (true)
         {
@@ -117,7 +122,7 @@ class Program
                     catch
                     {
                         Console.WriteLine("Internal Error running function");
-                        Console.WriteLine();
+                        Console.ReadLine();
                         Console.Clear();
                     }
 
@@ -130,7 +135,7 @@ class Program
             catch
             {
                 Console.WriteLine("Please make a valid selection");
-                Console.WriteLine();
+                Console.ReadLine();
                 Console.Clear();
             }
         }

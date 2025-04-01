@@ -1,5 +1,3 @@
-using System.Drawing;
-
 class Corner : Piece
 {
     private int _orientation;

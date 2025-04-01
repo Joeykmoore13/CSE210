@@ -1,5 +1,3 @@
-using System.Data.Common;
-using System.Linq.Expressions;
 using System.Diagnostics;
 
 class Cube
@@ -46,7 +44,7 @@ class Cube
             catch
             {
                 Console.WriteLine("Please make a valid selection");
-                Console.WriteLine();
+                Console.ReadLine();
                 Console.Clear();
                 continue;
             }
@@ -69,7 +67,7 @@ class Cube
                 if (names.Count() == 0)
                 {
                     Console.WriteLine("No states to load");
-                    Console.WriteLine();
+                    Console.ReadLine();
                     Console.Clear();
                     return;
                 }
@@ -85,7 +83,7 @@ class Cube
                     catch
                     {
                         Console.WriteLine("Please make a valid selection");
-                        Console.WriteLine();
+                        Console.ReadLine();
                         Console.Clear();
                         continue;
                     }
@@ -132,7 +130,7 @@ class Cube
             else
             {
                 Console.WriteLine("Please make a valid selection");
-                Console.WriteLine();
+                Console.ReadLine();
                 Console.Clear();
             }
         }
@@ -177,7 +175,7 @@ class Cube
             else
             {
                 Console.WriteLine("Please make a valid selection");
-                Console.WriteLine();
+                Console.ReadLine();
                 Console.Clear();
                 continue;
             }
@@ -221,7 +219,7 @@ class Cube
                 else
                 {
                     Console.WriteLine("Please make a valid selection.");
-                    Console.WriteLine();
+                    Console.ReadLine();
                     Console.Clear();
                 }
             }
@@ -268,7 +266,7 @@ class Cube
                 catch
                 {
                     Console.WriteLine("Please make a valid selection");
-                    Console.WriteLine();
+                    Console.ReadLine();
                     Console.Clear();
                     continue;
                 }
@@ -324,7 +322,7 @@ class Cube
                     catch
                     {
                         Console.WriteLine("Please make a valid seleection");
-                        Console.WriteLine();
+                        Console.ReadLine();
                         Console.Clear();
                         break;
                     }
@@ -336,7 +334,7 @@ class Cube
                 else
                 {
                     Console.WriteLine("Please make a valid selection");
-                    Console.WriteLine();
+                    Console.ReadLine();
                     Console.Clear();
                 }
             }
@@ -613,5 +611,15 @@ class Cube
     public List<Algorithm> GetAlgList()
     {
         return _algList;
+    }
+    public int GetCornerOrientationSum()
+    {
+        int total = 0;
+        foreach (var corner in _cornerList)
+        {
+            total = total + corner.Value.GetOrientation();
+        }
+        Console.WriteLine(total);
+        return total;
     }
 }

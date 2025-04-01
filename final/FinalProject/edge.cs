@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 class Edge : Piece
 {
     private bool _oriented;
